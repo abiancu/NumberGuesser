@@ -1,15 +1,82 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NumberGuesser
+namespace NumberGuesser // => this is the container for classes and Methods 
 {
-    class Program
+    class Program // => this is a class to use Objects. Here we can add 
     {
-        static void Main(string[] args)
+        // Entry point Method
+        static void Main(string[] args) // => Static = no instance of class. 
         {
+            //set app vars
+            string appName = "Number Gesser";
+            string appValue = "1.0.0";
+            string appAuthor = "Alejandro Biancucci";
+
+            // TO CHANGE THE TEXT COLOR
+            Console.ForegroundColor = ConsoleColor.Blue;
+
+
+            Console.WriteLine("{0}: Version {1} by {2}", appName, appValue, appAuthor);
+
+            // TO RESET TEXT COLOR
+            Console.ResetColor();
+
+            // ASK USERS NAME
+            Console.WriteLine("What is your name?");
+
+            //Get users input
+            string inputName = Console.ReadLine();
+
+            Console.WriteLine("Hello {0}, let's play a game... Made by {1}", inputName, appAuthor);
+
+            //GENERATE A RANDON NUMBER
+            Random random = new Random();
+            int rdn = random.Next(1, 11);
+
+            //Init correct number
+            int correctNumber = rdn;
+            // Init guess var
+            int guess = 0;
+
+            //ASK USER FOR A NUMBER
+            Console.WriteLine("Guess a number between 1 and 10");
+            while(guess != correctNumber)
+            {
+                //GET USER INPUT
+                string input = Console.ReadLine(); //=> this will be a string input.
+                
+                // SAFETY 
+                if(!int.TryParse(input, out guess))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Plese enter a valid number!");
+                    Console.ResetColor();
+                    continue;
+                }
+
+
+                //CAST INPUT TO AN INT
+                guess = Int32.Parse(input);
+
+                Console.ForegroundColor = ConsoleColor.Red;
+
+
+                Console.WriteLine("Wrong number, please try again");
+
+                // TO RESET TEXT COLOR
+                Console.ResetColor();
+            }
+
+            //CHANGE COLOR MESSAGE
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            // SUCCSESS MESSAGE
+            Console.WriteLine("Congratulations {0} is the right number!", guess);
+            Console.ReadLine();
+            //RESET TEXT COLOR
+            Console.ResetColor();
+
+
         }
     }
 }

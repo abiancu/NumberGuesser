@@ -54,9 +54,8 @@ namespace NumberGuesser // => this is the container for classes and Methods
                     continue;
                 }
 
-
                 //CAST INPUT TO AN INT
-                guess = Int32.Parse(input);
+                guess = int.Parse(input);
 
                 Console.ForegroundColor = ConsoleColor.Red;
 

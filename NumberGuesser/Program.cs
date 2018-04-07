@@ -7,27 +7,10 @@ namespace NumberGuesser // => this is the container for classes and Methods
         // Entry point Method
         static void Main(string[] args) // => Static = no instance of class. 
         {
-            //set app vars
-            string appName = "Number Gesser";
-            string appValue = "1.0.0";
-            string appAuthor = "Alejandro Biancucci";
 
-            // TO CHANGE THE TEXT COLOR
-            Console.ForegroundColor = ConsoleColor.Blue;
-
-
-            Console.WriteLine("{0}: Version {1} by {2}", appName, appValue, appAuthor);
-
-            // TO RESET TEXT COLOR
-            Console.ResetColor();
-
-            // ASK USERS NAME
-            Console.WriteLine("What is your name?");
-
-            //Get users input
-            string inputName = Console.ReadLine();
-
-            Console.WriteLine("Hello {0}, let's play a game... Made by {1}", inputName, appAuthor);
+            StartApp();
+            Greeting();
+           
             while (true)
             {
 
@@ -107,7 +90,38 @@ namespace NumberGuesser // => this is the container for classes and Methods
 
 
             }
-
+            
         }
+
+        // START APP METHOD();
+        static void StartApp()
+        {
+            //set app vars
+            string appName = "Number Gesser";
+            string appValue = "1.0.0";
+            string appAuthor = "Alejandro Biancucci";
+                 // TO CHANGE THE TEXT COLOR
+            Console.ForegroundColor = ConsoleColor.Blue;
+
+
+            Console.WriteLine("{0}: Version {1} by {2}", appName, appValue, appAuthor);
+
+            // TO RESET TEXT COLOR
+            Console.ResetColor();
+            
+        }
+
+        //GREETING METHOD
+        static void Greeting()
+        {
+            // ASK USERS NAME
+            Console.WriteLine("What is your name?");
+
+            //Get users input
+            string inputName = Console.ReadLine();
+            string appAuthor = "Alejandro Biancucci";
+            Console.WriteLine("Hello {0}, let's play a game... Made by {1}", inputName, appAuthor);
+        }
+
     }
 }

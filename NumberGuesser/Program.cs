@@ -28,53 +28,85 @@ namespace NumberGuesser // => this is the container for classes and Methods
             string inputName = Console.ReadLine();
 
             Console.WriteLine("Hello {0}, let's play a game... Made by {1}", inputName, appAuthor);
-
-            //GENERATE A RANDON NUMBER
-            Random random = new Random();
-            int rdn = random.Next(1, 11);
-
-            //Init correct number
-            int correctNumber = rdn;
-            // Init guess var
-            int guess = 0;
-
-            //ASK USER FOR A NUMBER
-            Console.WriteLine("Guess a number between 1 and 10");
-            while(guess != correctNumber)
+            while (true)
             {
-                //GET USER INPUT
-                string input = Console.ReadLine(); //=> this will be a string input.
-                
-                // SAFETY 
-                if(!int.TryParse(input, out guess))
+
+                //GENERATE A RANDON NUMBER
+                Random random = new Random();
+                int rdn = random.Next(1, 11);
+
+                //Init correct number
+                int correctNumber = rdn;
+                // Init guess var
+                int guess = 0;
+
+                //ASK USER FOR A NUMBER
+                Console.WriteLine("Guess a number between 1 and 10");
+                while (guess != correctNumber)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Plese enter a valid number!");
+
+                    //GET USER INPUT
+                    string input = Console.ReadLine(); //=> this will be a string input.
+
+                    // SAFETY 
+                    if (!int.TryParse(input, out guess))
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Plese enter a valid number!");
+                        Console.ResetColor();
+                        continue;
+                    }
+
+                    if (guess != correctNumber)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Wrong number, please try again");
+                        if (guess > 10)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Please enter a number between 1 and 10!!");
+                        }
+                    }
+
+                    //CAST INPUT TO AN INT
+                    guess = int.Parse(input);
+
+                    // TO RESET TEXT COLOR
                     Console.ResetColor();
-                    continue;
+
                 }
 
-                //CAST INPUT TO AN INT
-                guess = int.Parse(input);
+                //CHANGE COLOR MESSAGE
+                Console.ForegroundColor = ConsoleColor.Yellow;
 
-                Console.ForegroundColor = ConsoleColor.Red;
-
-
-                Console.WriteLine("Wrong number, please try again");
-
-                // TO RESET TEXT COLOR
+                // SUCCSESS MESSAGE
+                Console.WriteLine("Congratulations {0} is the right number!", guess);
+                Console.ReadLine();
+                //RESET TEXT COLOR
                 Console.ResetColor();
+
+                //ASK USER TO PLAY AGAIN 
+                Console.WriteLine("Wold you like to play again?? [Y / N]");
+
+                // GETE ANSWER
+                string answer = Console.ReadLine().ToUpper();
+                if (answer == "Y")
+                {
+
+                    continue;
+                }
+                else if(answer == "N")
+                {
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+               
+
+
             }
-
-            //CHANGE COLOR MESSAGE
-            Console.ForegroundColor = ConsoleColor.Yellow;
-
-            // SUCCSESS MESSAGE
-            Console.WriteLine("Congratulations {0} is the right number!", guess);
-            Console.ReadLine();
-            //RESET TEXT COLOR
-            Console.ResetColor();
-
 
         }
     }
